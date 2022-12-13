@@ -239,7 +239,7 @@ def main():
         
         
         
-        model = DecisionTreeClassifier(max_depth=max_depth)
+        model = DecisionTreeClassifier(max_depth=9)
         model.fit(x_train, y_train)
         accuracy = model.score(x_test, y_test)
         y_pred = model.predict(x_test)        
