@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score,confusion_matrix
@@ -39,7 +40,7 @@ def main():
     class_names = ["gain", "loss"]
 
     st.sidebar.subheader("Choose Classifier")
-    classifier = st.sidebar.selectbox("Classifier", ("Naive Bayes","Random Forest Classification", "K Nearest Neighbors","Support Vector Machine (SVM)", "All Models Evaluation"))
+    classifier = st.sidebar.selectbox("Classifier", ("Naive Bayes","Decision Tree Classification","Random Forest Classification", "K Nearest Neighbors","Support Vector Machine (SVM)", "All Models Evaluation"))
 
 
     df_results=pd.DataFrame(columns=["Classifier_name","Accuracy","Precision","Sensitivity","Specificity"])
@@ -133,7 +134,7 @@ def main():
         max_depth = st.sidebar.number_input("The maximum depth of the tree", 1, 100, step=2, key='max_depth')
         #bootstrap = st.sidebar.radio("Bootstrap samples when building trees", ("True", "False"), key='bootstrap')
         metrics = st.sidebar.multiselect("What matrix to plot?", ("Confusion Matrix", "ROC Curve",
-                                                                  "Precision-Recall Curve"))
+                                                                  "Precision-Recall Curve")
 
         if st.sidebar.button("Classify", key="classify"):
             st.subheader("Random Forest Results")
@@ -147,8 +148,29 @@ def main():
             #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
             df_results=print_all_model_evalutions(df_results,"Random Forest",confusion_matrix(y_test, y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
-
-
+                                         
+                                         
+                                         
+    if classifier == "Decision Tree Classification':
+        st.sidebar.subheader("Model Hyperparameters")
+        #n_estimators = st.sidebar.number_input("This is the number of trees in the forest", 100, 5000, step=10,
+                                               key='n_estimators')
+        max_depth = st.sidebar.number_input("The maximum depth of the tree", 1, 100,5, step=2, key='max_depth')
+        #bootstrap = st.sidebar.radio("Bootstrap samples when building trees", ("True", "False"), key='bootstrap')
+        metrics = st.sidebar.multiselect("What matrix to plot?", ("Confusion Matrix", "ROC Curve",
+                                                                  "Precision-Recall Curve"))
+        if st.sidebar.button("Classify", key="classify"):
+            st.subheader("Decision Tree Results")
+            #st.markdown("Random Forest is an ensemble tree method proposed in 2001 by L. Brieman, which seeks to divide a problem into smaller subsets and then aggregate them together by majority voting schema. As a general rule, Random forest grows randomized trees as it continues to split according to the CART algorithm on randomized subsets of a dataset. Once we set a prediction we use each randomized forest and take the rule by majority voting.")
+            model = DecisionTreeClassifier(max_depth=max_depth, n_jobs=-1)
+            model.fit(x_train, y_train)
+            accuracy = model.score(x_test, y_test)
+            y_pred = model.predict(x_test)
+            #st.write("Accuracy: ", accuracy.round(2))
+            #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
+            #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
+            df_results=print_all_model_evalutions(df_results,"Decision Tree",confusion_matrix(y_test, y_pred))
+            utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
     if classifier == 'K Nearest Neighbors':
         st.sidebar.subheader("Model Hyperparameters Results")
