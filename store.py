@@ -237,6 +237,15 @@ def main():
         y_pred = model.predict(x_test)
         df_results=print_all_model_evalutions1(df_results,"KNN",confusion_matrix(y_test,y_pred))
         
+        
+        
+        model = DecisionTreeClassifier(max_depth=max_depth)
+        model.fit(x_train, y_train)
+        accuracy = model.score(x_test, y_test)
+        y_pred = model.predict(x_test)        
+        
+        df_results=print_all_model_evalutions(df_results,"Decision Tree",confusion_matrix(y_test, y_pred))
+        
 
 
         st.dataframe(df_results)
