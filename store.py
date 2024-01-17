@@ -45,41 +45,6 @@ def main():
 
     df_results=pd.DataFrame(columns=["Classifier_name","Accuracy","Precision","Sensitivity","Specificity"])
 
-    def print_all_model_evalutions(df,model_name,cm):
-        total1=sum(sum(cm))
-    #####from confusion matrix calculate accuracy
-        accuracy1=(cm[0,0]+cm[1,1])/total1
-        st.write('Accuracy : ', accuracy1)
-    
-        precision=(cm[0,0]/(cm[0,0]+cm[1,0]))
-        st.write('Precision is: ',precision)
-        sensitivity1 = cm[0,0]/(cm[0,0]+cm[0,1])
-        st.write('Sensitivity/Recall : ', sensitivity1 )
-
-        specificity1 = cm[1,1]/(cm[1,0]+cm[1,1])
-        st.write('Specificity : ', specificity1)
-        df=df.append({"Classifier_name":model_name,"Accuracy":accuracy1,"Precision":precision,"Sensitivity":sensitivity1,"Specificity":specificity1},ignore_index=True)
-        return df
-
-
-    def print_all_model_evalutions1(df,model_name,cm):
-        total1=sum(sum(cm))
-    #####from confusion matrix calculate accuracy
-        accuracy1=(cm[0,0]+cm[1,1])/total1
-        #st.write('Accuracy : ', accuracy1)
-    
-        precision=(cm[0,0]/(cm[0,0]+cm[1,0]))
-        #st.write('Precision is: ',precision)
-        sensitivity1 = cm[0,0]/(cm[0,0]+cm[0,1])
-        #st.write('Sensitivity/Recall : ', sensitivity1 )
-
-        specificity1 = cm[1,1]/(cm[1,0]+cm[1,1])
-        #st.write('Specificity : ', specificity1)
-        df=df.append({"Classifier_name":model_name,"Accuracy":accuracy1,"Precision":precision,"Sensitivity":sensitivity1,"Specificity":specificity1},ignore_index=True)
-        return df
-
-
-
 
     if classifier == 'Support Vector Machine (SVM)':
         #st.sidebar.subheader("Model Hyperparameters")
@@ -243,8 +208,7 @@ def main():
         model.fit(x_train, y_train)
         accuracy = model.score(x_test, y_test)
         y_pred = model.predict(x_test)        
-        
-        df_results=print_all_model_evalutions(df_results,"Decision Tree",confusion_matrix(y_test, y_pred))
+
         
 
 
