@@ -23,14 +23,7 @@ def main():
     st.title("Superstore Dataset Classification Project")
     #st.sidebar.title("Classification Web App")
 
-    st.sidebar.header("Project for CSCI-657")
 
-    st.sidebar.markdown(" ")
-    st.sidebar.markdown("*This project is done as a part of the final project for the course Introduction to Data Mining*")
-
-    st.sidebar.markdown("**Authors**: Kuldeep Malhotra, Govind Pande, Jayeun Pendley & Fernando Rivero Laseca")
-    #st.sidebar.markdown("**NYIT ID**: 1302516")
-    #st.markdown("Profit or Loss prediction using Machine Learning")
     st.sidebar.markdown("Choose from 5 classifiers")
 
 
