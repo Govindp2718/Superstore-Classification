@@ -179,28 +179,28 @@ def main():
         y_pred = model.predict(x_test)        
 
         
-        df_results=print_all_model_evalutions1(df_results,"SVM",confusion_matrix(y_test,y_pred))
+        d#f_results=print_all_model_evalutions1(df_results,"SVM",confusion_matrix(y_test,y_pred))
         
 
         model = GaussianNB()
         model.fit(x_train, y_train)
         accuracy = model.score(x_test, y_test)
         y_pred = model.predict(x_test)        
-        df_results=print_all_model_evalutions1(df_results,"Naive Bayes",confusion_matrix(y_test,y_pred))
+        #df_results=print_all_model_evalutions1(df_results,"Naive Bayes",confusion_matrix(y_test,y_pred))
         
 
         model = RandomForestClassifier(n_estimators=5, max_depth=7, n_jobs=-1)
         model.fit(x_train, y_train)
         accuracy = model.score(x_test, y_test)
         y_pred = model.predict(x_test)
-        df_results=print_all_model_evalutions1(df_results,"Random Forest",confusion_matrix(y_test, y_pred))
+        #df_results=print_all_model_evalutions1(df_results,"Random Forest",confusion_matrix(y_test, y_pred))
         
 
         model = KNeighborsClassifier(n_neighbors=5)
         model.fit(x_train, y_train)
         accuracy = model.score(x_test, y_test)
         y_pred = model.predict(x_test)
-        df_results=print_all_model_evalutions1(df_results,"KNN",confusion_matrix(y_test,y_pred))
+        #df_results=print_all_model_evalutions1(df_results,"KNN",confusion_matrix(y_test,y_pred))
         
         
         
