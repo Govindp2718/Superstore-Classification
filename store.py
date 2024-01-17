@@ -40,7 +40,7 @@ def main():
     class_names = ["gain", "loss"]
 
     st.sidebar.subheader("Choose Classifier")
-    classifier = st.sidebar.selectbox("Classifier", ("Naive Bayes",'Decision Tree Classification',"Random Forest Classification", "K Nearest Neighbors","Support Vector Machine (SVM)", "All Models Evaluation"))
+    classifier = st.sidebar.selectbox("Classifier", ("Naive Bayes",'Decision Tree Classification',"Random Forest Classification", "K Nearest Neighbors","Support Vector Machine (SVM)"))
 
 
     df_results=pd.DataFrame(columns=["Classifier_name","Accuracy","Precision","Sensitivity","Specificity"])
@@ -85,9 +85,9 @@ def main():
             model.fit(x_train, y_train)
             accuracy = model.score(x_test, y_test)
             y_pred = model.predict(x_test)
-            #st.write("Accuracy: ", accuracy.round(2))
-            #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
-            #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
+            st.write("Accuracy: ", accuracy.round(2))
+            st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
+            st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
             #df_results=print_all_model_evalutions(df_results,"Naive Bayes",confusion_matrix(y_test,y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
@@ -108,9 +108,9 @@ def main():
             model.fit(x_train, y_train)
             accuracy = model.score(x_test, y_test)
             y_pred = model.predict(x_test)
-            #st.write("Accuracy: ", accuracy.round(2))
-            #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
-            #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
+            st.write("Accuracy: ", accuracy.round(2))
+            st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
+            st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
             #df_results=print_all_model_evalutions(df_results,"Random Forest",confusion_matrix(y_test, y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
@@ -131,9 +131,9 @@ def main():
             model.fit(x_train, y_train)
             accuracy = model.score(x_test, y_test)
             y_pred = model.predict(x_test)
-            #st.write("Accuracy: ", accuracy.round(2))
-            #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
-            #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
+            st.write("Accuracy: ", accuracy.round(2))
+            st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
+            st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
             #df_results=print_all_model_evalutions(df_results,"KNN",confusion_matrix(y_test,y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
@@ -155,64 +155,13 @@ def main():
             model.fit(x_train, y_train)
             accuracy = model.score(x_test, y_test)
             y_pred = model.predict(x_test)
-            #st.write("Accuracy: ", accuracy.round(2))
-            #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
-            #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
+            st.write("Accuracy: ", accuracy.round(2))
+            st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
+            st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
             #df_results=print_all_model_evalutions(df_results,"Decision Tree",confusion_matrix(y_test, y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
     #st.dataframe(df_results)
-
-
-
-
-
-    if classifier == 'All Models Evaluation':
-        st.title("Model Evaluation")
-        st.markdown("All the models have a good prediction accuracy, exceeding 80% of prediction capacity. At this point, both Random Forest and Decision Tree are better, at 95%. Both models have great precision and recall, but we choose Decision Tree because of its ability to avoid false alarms.")
-
-
-
-        model = SVC()
-        model.fit(x_train, y_train)
-        accuracy = model.score(x_test, y_test)
-        y_pred = model.predict(x_test)        
-
-        
-        d#f_results=print_all_model_evalutions1(df_results,"SVM",confusion_matrix(y_test,y_pred))
-        
-
-        model = GaussianNB()
-        model.fit(x_train, y_train)
-        accuracy = model.score(x_test, y_test)
-        y_pred = model.predict(x_test)        
-        #df_results=print_all_model_evalutions1(df_results,"Naive Bayes",confusion_matrix(y_test,y_pred))
-        
-
-        model = RandomForestClassifier(n_estimators=5, max_depth=7, n_jobs=-1)
-        model.fit(x_train, y_train)
-        accuracy = model.score(x_test, y_test)
-        y_pred = model.predict(x_test)
-        #df_results=print_all_model_evalutions1(df_results,"Random Forest",confusion_matrix(y_test, y_pred))
-        
-
-        model = KNeighborsClassifier(n_neighbors=5)
-        model.fit(x_train, y_train)
-        accuracy = model.score(x_test, y_test)
-        y_pred = model.predict(x_test)
-        #df_results=print_all_model_evalutions1(df_results,"KNN",confusion_matrix(y_test,y_pred))
-        
-        
-        
-        model = DecisionTreeClassifier(max_depth=9)
-        model.fit(x_train, y_train)
-        accuracy = model.score(x_test, y_test)
-        y_pred = model.predict(x_test)        
-
-        
-
-
-        st.dataframe(df_results)
 
 
 
