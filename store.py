@@ -65,7 +65,7 @@ def main():
             #st.write("Accuracy: ", accuracy.round(2))
             #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
             #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
-            df_results=print_all_model_evalutions(df_results,"SVM",confusion_matrix(y_test,y_pred))
+            #df_results=print_all_model_evalutions(df_results,"SVM",confusion_matrix(y_test,y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
 
@@ -88,7 +88,7 @@ def main():
             #st.write("Accuracy: ", accuracy.round(2))
             #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
             #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
-            df_results=print_all_model_evalutions(df_results,"Naive Bayes",confusion_matrix(y_test,y_pred))
+            #df_results=print_all_model_evalutions(df_results,"Naive Bayes",confusion_matrix(y_test,y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
 
@@ -111,7 +111,7 @@ def main():
             #st.write("Accuracy: ", accuracy.round(2))
             #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
             #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
-            df_results=print_all_model_evalutions(df_results,"Random Forest",confusion_matrix(y_test, y_pred))
+            #df_results=print_all_model_evalutions(df_results,"Random Forest",confusion_matrix(y_test, y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
 
@@ -134,7 +134,7 @@ def main():
             #st.write("Accuracy: ", accuracy.round(2))
             #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
             #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
-            df_results=print_all_model_evalutions(df_results,"KNN",confusion_matrix(y_test,y_pred))
+            #df_results=print_all_model_evalutions(df_results,"KNN",confusion_matrix(y_test,y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
 
@@ -158,7 +158,7 @@ def main():
             #st.write("Accuracy: ", accuracy.round(2))
             #st.write("Precision: ", precision_score(y_test, y_pred, labels=class_names).round(2))
             #st.write("Recall: ", recall_score(y_test, y_pred, labels=class_names).round(2))
-            df_results=print_all_model_evalutions(df_results,"Decision Tree",confusion_matrix(y_test, y_pred))
+            #df_results=print_all_model_evalutions(df_results,"Decision Tree",confusion_matrix(y_test, y_pred))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
     #st.dataframe(df_results)
